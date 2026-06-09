@@ -1,7 +1,7 @@
 package nivell02.exceptions;
 
-public class NoValidCharException extends Exception{
-    public NoValidCharException (String message){
+public class NotValidCharException extends Exception{
+    public NotValidCharException(String message){
         super(message);
     }
 }

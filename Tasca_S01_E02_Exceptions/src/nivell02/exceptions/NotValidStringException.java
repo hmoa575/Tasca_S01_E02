@@ -1,7 +1,7 @@
 package nivell02.exceptions;
 
-public class NoValidStringException extends Exception{
-    public NoValidStringException (String message){
+public class NotValidStringException extends Exception{
+    public NotValidStringException(String message){
         super(message);
     }
 }

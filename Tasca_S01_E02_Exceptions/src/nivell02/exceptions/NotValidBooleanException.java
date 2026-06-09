@@ -1,7 +1,7 @@
 package nivell02.exceptions;
 
-public class NoValidBooleanException extends Exception{
-    public NoValidBooleanException(String message){
+public class NotValidBooleanException extends Exception{
+    public NotValidBooleanException(String message){
         super(message);
     }
 }
