@@ -161,5 +161,9 @@ public class ConsoleReader {
             } while (error) ;
             return false;
         }
+
+    public static void close() {
+        inData.close();
     }
+}
 
