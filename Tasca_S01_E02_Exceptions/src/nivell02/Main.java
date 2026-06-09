@@ -20,7 +20,7 @@ public class Main {
         System.out.println("Character: " + character);
 
         String string = ConsoleReader.readString("Type your pet's name: ");
-        System.out.println("Your pet's name is: ");
+        System.out.println("Your pet's name is: " + string);
 
         boolean answer = ConsoleReader.readYesNo("Do you want exit from the application (s/n): ");
         System.out.println("Answer: " + ( answer? "Yes" : "No"));

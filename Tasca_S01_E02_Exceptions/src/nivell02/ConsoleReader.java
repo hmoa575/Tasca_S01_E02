@@ -9,26 +9,26 @@ import java.util.Scanner;
 
 public class ConsoleReader {
 
-    static Scanner inData = new Scanner(System.in);
+   private static final Scanner inData = new Scanner(System.in);
 
     // Metodes amb tractament d'InputMismatchException
 
     public static byte readByte(String message) {
-        byte oneByte;
+        byte oneByte = 0;
         boolean error;
         do {
             error = false;
             System.out.println(message);
             try {
                 oneByte = inData.nextByte();
-                return oneByte;
+                inData.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
                 inData.nextLine();
                 error = true;
             }
         } while (error);
-        return 0;
+        return oneByte;
     }
 
     public static void spendNextLine() {
@@ -36,58 +36,58 @@ public class ConsoleReader {
     }
 
     public static int readInt(String message) {
-        int oneInteger;
+        int oneInteger = 0;
         boolean error;
         do {
             error = false;
             System.out.println(message);
             try {
                 oneInteger = inData.nextInt();
-                return oneInteger;
+                inData.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
                 inData.nextLine();
                 error = true;
             }
         } while (error);
-        return 0;
+        return oneInteger;
 
     }
 
     public static float readFloat(String message) {
-        float oneFloat;
+        float oneFloat = 0;
         boolean error;
         do {
             error = false;
             System.out.println(message);
             try {
                 oneFloat = inData.nextFloat();
-                return oneFloat;
+                inData.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
                 inData.nextLine();
                 error = true;
             }
         } while (error);
-        return 0;
+        return oneFloat;
     }
 
     public static double readDouble(String message) {
-        double oneDouble;
+        double oneDouble = 0;
         boolean error;
         do {
             error = false;
             System.out.println(message);
             try {
                 oneDouble = inData.nextDouble();
-                return oneDouble;
+                inData.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
                 inData.nextLine();
                 error = true;
             }
         } while (error);
-        return 0;
+        return oneDouble;
     }
 
 
@@ -96,14 +96,15 @@ public class ConsoleReader {
 
     // Only accepts a single character. If more than one is entered, it throws a custom exception.
     public static char readChar(String message){
+        char string = ' ';
         boolean error;
         do {
             error = false;
             System.out.println(message);
-            String string = inData.nextLine();
+            String text = inData.nextLine();
             try{
-            if(string.length() == 1){
-                return string.charAt(0);
+            if(text.length() == 1){
+                string = text.charAt(0);
             }else {
                 throw new NotOnlyOneCharacterException("Incorrect data (no one character): ");
             }
@@ -112,19 +113,20 @@ public class ConsoleReader {
                 error = true;
             }
         } while (error);
-        return ' ';
+        return string;
     }
 
     // Reads a string as it is received, but you could validate minimum length or content if necessary.
     public static String readString(String message) {
+        String text = "";
         boolean error;
         do {
             error = false;
             System.out.println(message);
-            String string = inData.nextLine();
+            text = inData.nextLine();
             try {
-                if (string.length() >= 6) {
-                    return string;
+                if (text.length() >= 6) {
+                    return text;
                 } else {
                     throw new MinimumLengthException("Type more than 6 characters.");
                 }
@@ -133,24 +135,24 @@ public class ConsoleReader {
                     error = true;
                 }
         } while (error) ;
-        return "";
+        return text;
     }
 
 
     // If the user enters “s” (lowercase), it returns true. If they enter “n”, it returns false.
 // Any other input should generate a custom exception.
     public static boolean readYesNo(String message) {
-
+        boolean result = false;
         boolean error;
 
         do {
             error = false;
             System.out.println(message);
-            String string = inData.nextLine().trim().toLowerCase();
+            String text = inData.nextLine().trim().toLowerCase();
             try {
-                if (string.equals("s")) {
+                if (text.equals("s")) {
                     return true;
-                } else if (string.equals("n")) {
+                } else if (text.equals("n")) {
                     return false;
                 } else {
                     throw new NotValidBooleanException("Invalid response: Type 's' for yes or 'n' for not.");}
@@ -159,7 +161,7 @@ public class ConsoleReader {
                     error = true;
                 }
             } while (error) ;
-            return false;
+            return result;
         }
 
     public static void close() {
