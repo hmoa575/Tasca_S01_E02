@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ConsoleReader {
 
-   private static final Scanner inData = new Scanner(System.in);
+   private static final Scanner INDATA = new Scanner(System.in);
 
     // Metodes amb tractament d'InputMismatchException
 
@@ -20,11 +20,11 @@ public class ConsoleReader {
             error = false;
             System.out.println(message);
             try {
-                oneByte = inData.nextByte();
-                inData.nextLine();
+                oneByte = INDATA.nextByte();
+                INDATA.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
-                inData.nextLine();
+                INDATA.nextLine();
                 error = true;
             }
         } while (error);
@@ -32,7 +32,7 @@ public class ConsoleReader {
     }
 
     public static void spendNextLine() {
-        inData.nextLine();
+        INDATA.nextLine();
     }
 
     public static int readInt(String message) {
@@ -42,11 +42,11 @@ public class ConsoleReader {
             error = false;
             System.out.println(message);
             try {
-                oneInteger = inData.nextInt();
-                inData.nextLine();
+                oneInteger = INDATA.nextInt();
+                INDATA.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
-                inData.nextLine();
+                INDATA.nextLine();
                 error = true;
             }
         } while (error);
@@ -61,11 +61,11 @@ public class ConsoleReader {
             error = false;
             System.out.println(message);
             try {
-                oneFloat = inData.nextFloat();
-                inData.nextLine();
+                oneFloat = INDATA.nextFloat();
+                INDATA.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
-                inData.nextLine();
+                INDATA.nextLine();
                 error = true;
             }
         } while (error);
@@ -79,11 +79,11 @@ public class ConsoleReader {
             error = false;
             System.out.println(message);
             try {
-                oneDouble = inData.nextDouble();
-                inData.nextLine();
+                oneDouble = INDATA.nextDouble();
+                INDATA.nextLine();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data: " + exception.getMessage());
-                inData.nextLine();
+                INDATA.nextLine();
                 error = true;
             }
         } while (error);
@@ -101,7 +101,7 @@ public class ConsoleReader {
         do {
             error = false;
             System.out.println(message);
-            String text = inData.nextLine();
+            String text = INDATA.nextLine();
             try{
             if(text.length() == 1){
                 string = text.charAt(0);
@@ -123,7 +123,7 @@ public class ConsoleReader {
         do {
             error = false;
             System.out.println(message);
-            text = inData.nextLine();
+            text = INDATA.nextLine();
             try {
                 if (text.length() >= 6) {
                     return text;
@@ -148,7 +148,7 @@ public class ConsoleReader {
         do {
             error = false;
             System.out.println(message);
-            String text = inData.nextLine().trim().toLowerCase();
+            String text = INDATA.nextLine().trim().toLowerCase();
             try {
                 if (text.equals("s")) {
                     return true;
@@ -165,7 +165,7 @@ public class ConsoleReader {
         }
 
     public static void close() {
-        inData.close();
+        INDATA.close();
     }
 }
 
